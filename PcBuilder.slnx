@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="PcBuilder/PcBuilder.csproj" />
+  <Project Path="API/API.csproj" Id="f21b48c1-cf14-4054-8340-13929a38e6f0" />
+  <Project Path="Application/Application.csproj" Id="d89df2b4-e29b-4c23-9d91-6003010bcebe" />
+  <Project Path="Domain/Domain.csproj" Id="962ec0f7-9f12-47fd-9e1c-6b8ca4c4dd51" />
+  <Project Path="Infrastructure/Infrastructure.csproj" Id="6cc97a37-839a-4bec-8156-a1dd0bb91686" />
+  <Project Path="Persistence/Persistence.csproj" Id="e0a17bfd-2a2a-48d7-aa9c-7f0db999b6ef" />
 </Solution>

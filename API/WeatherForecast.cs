@@ -1,4 +1,4 @@
-namespace PcBuilder
+namespace API
 {
     public class WeatherForecast
     {
