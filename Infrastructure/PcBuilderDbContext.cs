@@ -1,15 +1,9 @@
-﻿using Domain.Entities;
+﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel;
 
-public class PcBuilderDbContext : DbContext
+//dotnet ef migrations add InitialCreate --project .\Infrastructure --startup-project .\API
+public class PcBuilderDbContext(DbContextOptions<PcBuilderDbContext> options) : DbContext(options)
 {
-    public PcBuilderDbContext(DbContextOptions<PcBuilderDbContext> options)
-        : base(options)
-    {
-    }
-
-    public DbSet<Component> Components => Set<Component>();
     public DbSet<Cpu> Cpus => Set<Cpu>();
     public DbSet<Gpu> Gpus => Set<Gpu>();
     public DbSet<Motherboard> Motherboards => Set<Motherboard>();
