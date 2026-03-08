@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 //dotnet ef migrations add InitialCreate --project .\Infrastructure --startup-project .\API
 public class PcBuilderDbContext(DbContextOptions<PcBuilderDbContext> options) : DbContext(options)
 {
-    public DbSet<Cpu> Cpus => Set<Cpu>();
-    public DbSet<Gpu> Gpus => Set<Gpu>();
-    public DbSet<Motherboard> Motherboards => Set<Motherboard>();
+    public DbSet<Cpu> Cpus { get; set; }
+    public DbSet<Gpu> Gpus { get; set; }
+    public DbSet<Motherboard> Motherboards { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
