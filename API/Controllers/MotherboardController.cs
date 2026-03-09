@@ -1,6 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Api.Controllers;
 
 [ApiController]
@@ -15,9 +14,9 @@ public class MotherboardsController : BaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(int pageIndex = 0, int pageSize = 10)
     {
-        return Ok(await _service.GetAllAsync());
+        return Ok(await _service.GetAsync(pageIndex, pageSize));
     }
 
     [HttpGet("{id}")]

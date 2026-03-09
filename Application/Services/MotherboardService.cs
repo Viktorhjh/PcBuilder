@@ -1,56 +1,50 @@
-﻿using Application.Interfaces;
-using Core.Entities;
+﻿using Application.Common.Interfaces;
+using Application.DTOs;
 using Infrastructure.Interfaces;
 
 namespace Application.Services;
 
-public class MotherboardService : IMotherboardService
+public class MotherboardService(IMotherboardRepository repository) : IMotherboardService
 {
-    private readonly IMotherboardRepository _repository;
-
-    public MotherboardService(IMotherboardRepository repository)
+    public async Task<Pagination<MotherboardDto>> GetAsync(int pageIndex, int pageSize)
     {
-        _repository = repository;
+        return await repository.ToPagination(
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            orderBy: x => x.Name,
+            ascending: true,
+            selector: x => new MotherboardDto
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Chipset = x.Chipset,
+                Socket = x.Socket,
+                Manufacturer = x.Manufacturer,
+                Price = x.Price,
+                PowerConsumptionW = x.PowerConsumptionW,
+                CreatedAt = x.CreatedAt,
+                IsDeleted = x.IsDeleted,
+                DeletedAt = x.DeletedAt
+            });
     }
 
-    public async Task<List<Motherboard>> GetAllAsync()
+    public Task<MotherboardDto> CreateAsync(string socket, string chipset)
     {
-        return await _repository.GetAllAsync();
+        throw new NotImplementedException();
     }
 
-    public async Task<Motherboard?> GetByIdAsync(Guid id)
+    public Task DeleteAsync(Guid id)
     {
-        return await _repository.GetByIdAsync(id);
+        throw new NotImplementedException();
     }
 
-    public async Task<Motherboard> CreateAsync(string socket, string chipset)
+    public Task<MotherboardDto?> GetByIdAsync(Guid id)
     {
-        var motherboard = Motherboard.Create(socket, chipset);
-
-        await _repository.AddAsync(motherboard);
-
-        return motherboard;
+        throw new NotImplementedException();
     }
 
-    public async Task UpdateAsync(Guid id, string socket, string chipset)
+    public Task UpdateAsync(Guid id, string socket, string chipset)
     {
-        Motherboard? motherboard = await _repository.GetByIdAsync(id);
-
-        if (motherboard == null)
-            throw new Exception("Motherboard not found");
-
-        motherboard.Update(socket, chipset);
-
-        await _repository.UpdateAsync(motherboard);
-    }
-
-    public async Task DeleteAsync(Guid id)
-    {
-        Motherboard? motherboard = await _repository.GetByIdAsync(id);
-
-        if (motherboard == null)
-            throw new Exception("Motherboard not found");
-
-        await _repository.DeleteAsync(motherboard);
+        throw new NotImplementedException();
     }
 }

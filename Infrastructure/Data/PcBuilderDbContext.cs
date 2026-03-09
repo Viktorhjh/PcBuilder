@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
+namespace Infrastructure.Data;
 //dotnet ef migrations add InitialCreate --project .\Infrastructure --startup-project .\API
 public class PcBuilderDbContext(DbContextOptions<PcBuilderDbContext> options) : DbContext(options)
 {

@@ -1,5 +1,6 @@
-using Application.Interfaces;
+using Application.Common.Interfaces;
 using Application.Services;
+using Infrastructure.Data;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;

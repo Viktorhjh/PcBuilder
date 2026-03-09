@@ -1,10 +1,10 @@
 ﻿using Application.DTOs;
 using Core.Interfaces;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Infrastructure.Repositories;
-
+namespace Application.Repositories;
 
 public class GenericRepository<T>(PcBuilderDbContext context) : IGenericRepository<T> where T : class
 {
@@ -21,7 +21,6 @@ public class GenericRepository<T>(PcBuilderDbContext context) : IGenericReposito
     }
 
     #region  Read
-
     public async Task<bool> AnyAsync(Expression<Func<T, bool>> filter)
     {
         return await _dbSet.AnyAsync(filter);
@@ -106,8 +105,8 @@ public class GenericRepository<T>(PcBuilderDbContext context) : IGenericReposito
     }
 
     #endregion
-    #region Update & delete
 
+    #region Update & delete
     public void Update(T entity)
     {
         _dbSet.Update(entity);
